@@ -4,9 +4,10 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import education from "../assets/education.jpg"; 
+import education from "../assets/education.jpg";
 import forest from "../assets/forest.jpg";
 import healthcare from "../assets/healthcare.jpg";
+import "../styles/swiper-custom.css"; // Import your custom CSS file
 
 const Hero = () => {
   return (

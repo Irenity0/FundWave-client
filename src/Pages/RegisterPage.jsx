@@ -1,11 +1,36 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext);
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const form = e.target
+        const name = form.elements.name.value;
+        const photo = form.elements.photo.value;
+        const email = form.elements.email.value;
+        const password = form.elements.password.value;
+
+        createUser(email, password)
+        .then((result) => {
+            const user = result.user;
+            updateProfile(user, {
+                displayName: name,
+                photoURL: photo
+            }).then(() => {
+                console.log("User profile updated!");
+            });
+            console.log(user);
+            form.reset();
+        })
+        .catch((error) => {
+            console.error("Error:", error.message);
+        });
     }
 
     const [showPassword, setShowPassword] = useState(false);
