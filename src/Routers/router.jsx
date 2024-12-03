@@ -5,7 +5,10 @@ import ErrorPage from "../Pages/ErrorPage";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/LoginPage";
 import Register from "../Pages/RegisterPage";
-
+import Campaigns from "../components/Campaigns";
+import Campaign from "../components/AddCampaign";
+import Donations from "../components/Donations";
+import AddCampaign from "../components/AddCampaign";
 
 const router = createBrowserRouter([
     {
@@ -14,8 +17,24 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path: "",
+                path: "/",
                 element: <HomePage></HomePage>
+            },
+            {
+                path: "/campaigns", 
+                element: <Campaigns></Campaigns> 
+            },
+            {
+                path: "/addcampaign", 
+                element: <Campaign></Campaign> 
+            },
+            {
+                path: "/mycampaign",
+                element: <AddCampaign></AddCampaign>
+            },
+            {
+                path: "/donations",
+                element: <Donations></Donations>
             }
         ]
     },

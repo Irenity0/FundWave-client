@@ -26,9 +26,10 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 <li><NavLink to={"/"}>Home</NavLink></li> 
-                <li><NavLink to={"/lessons"}>Start_Learning</NavLink></li> 
-                <li><NavLink to={"/tutorial"}>Tutorials</NavLink></li> 
-                <li><NavLink to={"/aboutus"}>About_Us</NavLink></li> 
+                <li><NavLink to={"/campaigns"}>All Campaigns</NavLink></li> 
+                <li><NavLink to={"/addcampaign"}>Add New Campaign</NavLink></li> 
+                <li><NavLink to={"/mycampaign"}>My Campaign</NavLink></li> 
+                <li><NavLink to={"/donations"}>My Donations</NavLink></li> 
               </ul>
             </div>
             <div className="flex items-center">
@@ -39,15 +40,15 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
                 <li><NavLink to={"/"}>Home</NavLink></li> 
-                <li><NavLink to={"/lessons"}>Start_Learning</NavLink></li> 
-                <li><NavLink to={"/tutorial"}>Tutorials</NavLink></li> 
-                <li><NavLink to={"/aboutus"}>About_Us</NavLink></li> 
+                <li><NavLink to={"/allcampaigns"}>All Campaigns</NavLink></li> 
+                <li><NavLink to={"/addcampaign"}>Add New Campaign</NavLink></li> 
+                <li><NavLink to={"/mycampaign"}>My Campaign</NavLink></li> 
+                <li><NavLink to={"/donations"}>My Donations</NavLink></li> 
             </ul>
           </div>
-          <div className="navbar-end">
-            <p className="text-primary mr-4 border-b-2 border-dashed border-primary">Welcome!</p>
-            
-            <Link to={"/auth/login"} className="btn border-2 border-primary text-primary hover:bg-neutral hover:border-primary">Login</Link>
+          <div className="navbar-end">            
+            <Link to={"/auth/login"} className="btn border-2 border-primary text-primary hover:bg-neutral hover:border-primary mr-4">Login</Link> 
+            <Link to={"/auth/register"} className="btn border-2 border-primary text-primary hover:bg-neutral hover:border-primary">Register</Link>
           </div>
         </div>
     );
