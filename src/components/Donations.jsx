@@ -1,6 +1,6 @@
 const Donations = () => {
     return (
-        <h2>my campaigns</h2>
+        <h2>donate</h2>
     );
 };
 

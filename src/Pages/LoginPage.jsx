@@ -38,7 +38,7 @@ const Login = () => {
                     name="password"
                     type={showPassword ? 'text' : 'password'}
                     placeholder="password"
-                    className="input placeholder-accent input-bordered"
+                    className="input input-bordered placeholder-accent border-accent"
                     required
                 />
                 <button

@@ -17,7 +17,7 @@ const Hero = () => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
         loop
-        className="w-full rounded-xl md:h-[600px]"
+        className="w-full rounded-xl md:h-[500px]"
       >
         {/* Slide 1: Education */}
         <SwiperSlide>
@@ -29,7 +29,7 @@ const Hero = () => {
                 Your support can make quality education accessible to more students.
               </p>
             </div>
-            <div className="flex h-full md:w-2/3 justify-end p-4 lg:p-14">
+            <div className="flex h-full lg:w-2/3 justify-end p-4 lg:p-14">
               <img
                 src={education}
                 alt="Education Slide"
@@ -49,7 +49,7 @@ const Hero = () => {
                 Every contribution helps us move closer to a greener planet.
               </p>
             </div>
-            <div className="flex h-full md:w-2/3 justify-end p-4 lg:p-14">
+            <div className="flex h-full lg:w-2/3 justify-end p-4 lg:p-14">
               <img
                 src={forest}
                 alt="Reforest Slide"
@@ -69,7 +69,7 @@ const Hero = () => {
                 Together, we can ensure better healthcare access for everyone.
               </p>
             </div>
-            <div className="flex h-full md:w-2/3 justify-end p-4 lg:p-14">
+            <div className="flex h-full lg:w-2/3 justify-end p-4 lg:p-14">
               <img
                 src={healthcare}
                 alt="Healthcare Slide"
