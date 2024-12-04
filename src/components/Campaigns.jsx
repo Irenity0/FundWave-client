@@ -49,7 +49,7 @@ const Campaigns = () => {
                         {sortedCampaigns.map((campaign, index) => (
                             <tr key={campaign.email}>
                                 <td>{index + 1}</td>
-                                <td className="underline font-bold"><Link to={`/${campaign._id}`}>{campaign.title}</Link></td>
+                                <td className="underline font-bold"><Link to={`/allcampaigns/${campaign._id}`}>{campaign.title}</Link></td>
                                 <td>{campaign.campaignType}</td>
                                 <td>{campaign.minDonation}</td>
                                 <td>{campaign.deadline}</td>

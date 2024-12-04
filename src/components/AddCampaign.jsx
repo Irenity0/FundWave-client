@@ -94,6 +94,14 @@ const AddCampaign = () => {
             title: 'Campaign Added!',
             text: 'Your campaign has been successfully added.',
           });
+          setFormData({
+            image: '',
+            title: '',
+            campaignType: '',
+            description: '',
+            minDonation: '',
+            deadline: '',
+        });
         }
       })
       .catch((error) => {
