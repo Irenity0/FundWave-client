@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 
 const HomeLayout = () => {
     return (
-            <div className="mx-auto space-y-14 font-raleway">
+            <div className="mx-auto space-y-14 font-raleway ">
                 <Navbar></Navbar>
-                <section className="w-11/12 mx-auto">
+                <section className="w-11/12 mx-auto min-h-60">
                 <Outlet></Outlet>
                 </section>
                 <Footer></Footer>
