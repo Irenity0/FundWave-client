@@ -94,12 +94,12 @@ const Register = () => {
 
             {/* login btn & google auth */}
             <div className="form-control mt-6">
-                <button className="btn btn-primary text-[#FFDEB6]">Login</button>
+                <button className="btn btn-primary text-[#FFDEB6]">Register</button>
                 <button type="button" className="btn text-[#FFDEB6] btn-secondary mt-4">Login with Google</button>
                 <span className="text-xl font-semibold text-accent mt-4">
                     Already have an Account?{" "}
                     <Link className="underline text-primary" to={"/auth/login"}>
-                        Register
+                        Login
                     </Link>
                 </span>
             </div>

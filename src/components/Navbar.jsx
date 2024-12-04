@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png"
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
 
@@ -33,7 +34,7 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="flex items-center">
-            <span className=""><img className="w-16 h-16" src={logo} alt="" /></span>
+            <span className=""><img className="w-16 h-16 animate-spin" src={logo} alt="" /></span>
             <Link to={"/"} className="btn btn-ghost text-2xl font-bold text-primary hover:bg-neutral"> FundWave</Link>
             </div>
           </div>
@@ -48,7 +49,8 @@ const Navbar = () => {
           </div>
           <div className="navbar-end">            
             <Link to={"/auth/login"} className="btn border-2 border-primary text-primary hover:bg-neutral hover:border-primary mr-4">Login</Link> 
-            <Link to={"/auth/register"} className="btn border-2 border-primary text-primary hover:bg-neutral hover:border-primary">Register</Link>
+            <Link to={"/auth/register"} className="btn border-2 border-primary text-primary hover:bg-neutral hover:border-primary mr-4">Register</Link>
+            <ThemeToggle></ThemeToggle>
           </div>
         </div>
     );

@@ -11,7 +11,7 @@ const RunningCampaign = () => {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Campaign 1 */}
-          <div className="p-6 bg-neutral shadow-lg rounded-lg">
+          <div className="p-6 bg-neutral/70 shadow-lg rounded-lg">
             <h3 className="text-2xl text-secondary font-bold mb-4">Empower Education</h3>
             <p className="text-accent mb-4">
               Help provide essential resources for schools in underprivileged communities.  
@@ -21,7 +21,7 @@ const RunningCampaign = () => {
           </div>
 
           {/* Campaign 2 */}
-          <div className="p-6 bg-neutral shadow-lg rounded-lg">
+          <div className="p-6 bg-neutral/70 shadow-lg rounded-lg">
             <h3 className="text-2xl text-secondary font-bold mb-4">Reforest Our Future</h3>
             <p className="text-accent mb-4">
               Join us in planting 10,000 trees to combat climate change and restore ecosystems.  
@@ -31,7 +31,7 @@ const RunningCampaign = () => {
           </div>
 
           {/* Campaign 3 */}
-          <div className="p-6 bg-neutral shadow-lg rounded-lg">
+          <div className="p-6 bg-neutral/70 shadow-lg rounded-lg">
             <h3 className="text-2xl text-secondary font-bold mb-4">Healthcare for All</h3>
             <p className="text-accent mb-4">
               Support our initiative to bring essential medical supplies to remote areas.  
@@ -41,7 +41,7 @@ const RunningCampaign = () => {
           </div>
 
           {/* Campaign 4 */}
-          <div className="p-6 bg-neutral shadow-lg rounded-lg">
+          <div className="p-6 bg-neutral/70 shadow-lg rounded-lg">
             <h3 className="text-2xl text-secondary font-bold mb-4">Clean Water Initiative</h3>
             <p className="text-accent mb-4">
               Help us provide clean water solutions to communities facing water scarcity.  
@@ -51,7 +51,7 @@ const RunningCampaign = () => {
           </div>
 
           {/* Campaign 5 */}
-          <div className="p-6 bg-neutral shadow-lg rounded-lg">
+          <div className="p-6 bg-neutral/70 shadow-lg rounded-lg">
             <h3 className="text-2xl text-secondary font-bold mb-4">Fight Hunger</h3>
             <p className="text-accent mb-4">
               Join our mission to fight hunger by providing food relief to those in need.  
@@ -61,7 +61,7 @@ const RunningCampaign = () => {
           </div>
 
           {/* Campaign 6 */}
-          <div className="p-6 bg-neutral shadow-lg rounded-lg">
+          <div className="p-6 bg-neutral/70 shadow-lg rounded-lg">
             <h3 className="text-2xl text-secondary font-bold mb-4">Women's Empowerment</h3>
             <p className="text-accent mb-4">
               Support women’s empowerment programs that focus on education, leadership, and financial independence.  
