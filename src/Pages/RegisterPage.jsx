@@ -1,37 +1,66 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import Swal from 'sweetalert2'; 
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, handleGoogleSignIn } = useContext(AuthContext);
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const form = e.target
+    
+        const form = e.target;
         const name = form.elements.name.value;
         const photo = form.elements.photo.value;
         const email = form.elements.email.value;
         const password = form.elements.password.value;
-
-        createUser(email, password)
-        .then((result) => {
-            const user = result.user;
-            updateProfile(user, {
-                displayName: name,
-                photoURL: photo
-            }).then(() => {
-                console.log("User profile updated!");
+    
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    
+        if (!passwordRegex.test(password)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Password',
+                text: 'Password must be at least 6 characters long, contain one uppercase letter, and one lowercase letter.',
             });
-            console.log(user);
-            form.reset();
-        })
-        .catch((error) => {
-            console.error("Error:", error.message);
-        });
-    }
+        } else {
+            createUser(email, password)
+                .then(result => {
+                    console.log('user created at fb', result.user);
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Registered Successfully!',
+                        text: 'Hey there!',
+                    });
+            
+    
+                    const newUser = { name, email, photo };
+                    // Save new user info to the database
+                    fetch('http://localhost:5000/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify(newUser),
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                console.log('user created in db');
+                            }
+                        });
+                        navigate('/');
+                })
+                .catch(error => {
+                    console.log('error', error);
+                });
+                form.reset();
+        }
+    };
+    
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -95,7 +124,7 @@ const Register = () => {
             {/* login btn & google auth */}
             <div className="form-control mt-6">
                 <button className="btn btn-primary text-[#FFDEB6]">Register</button>
-                <button type="button" className="btn text-[#FFDEB6] btn-secondary mt-4">Login with Google</button>
+                <button onClick={handleGoogleSignIn} type="button" className="btn text-[#FFDEB6] btn-secondary mt-4">Login with Google</button>
                 <span className="text-xl font-semibold text-accent mt-4">
                     Already have an Account?{" "}
                     <Link className="underline text-primary" to={"/auth/login"}>

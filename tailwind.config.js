@@ -10,7 +10,7 @@ export default {
         "raleway": ["Raleway", "monospace"],
       },
       animation: {
-        spin: 'spin 2s linear infinite', // This creates a spinning animation
+        spin: 'spin 2s linear infinite', 
       },
       keyframes: {
         spin: {
@@ -41,5 +41,5 @@ export default {
       },
     ],
   },
-  darkMode: 'class', // Enable class-based dark mode
+  darkMode: 'darkclass', // Enable class-based dark mode
 };

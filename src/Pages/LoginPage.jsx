@@ -1,26 +1,65 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from 'sweetalert2'; 
 
 const Login = () => {
 
 
     const [showPassword, setShowPassword] = useState(false);
+    const { signInUser, handleGoogleSignIn } = useContext(AuthContext)
+    const navigate = useNavigate();
+
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+  e.preventDefault();
 
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+  const email = e.target.email.value;
+  const password = e.target.password.value;
 
-        console.log(email, password);
-        signInUser(email, password)
-            .then(result => {
-                console.log(result.user);
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+  console.log(email, password);
+
+  signInUser(email, password)
+    .then(result => {
+      console.log(result.user); // Handle the login success here
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Login Successful!',
+        text: 'Welcome back!',
+      });
+      navigate('/');
+    })
+    .catch(error => {
+      console.log(error);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid email or password',
+        text: 'Please check your credentials and try again.',
+      });
+      e.target.reset(); 
+    });
+
+  const loginInfo = { email };
+
+  fetch(`http://localhost:5000/users`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(loginInfo), 
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log('Sign-in info updated in DB', data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+    };
+
+      
 
 
     return (
@@ -67,7 +106,7 @@ const Login = () => {
              {/*register btn & google auth  */}
             <div className="form-control mt-6">
                 <button className="btn btn-primary text-[#FFDEB6]">Login</button>
-                <button type="button" className="btn btn-secondary text-[#FFDEB6] mt-4">Login with Google</button>
+                <button onClick={handleGoogleSignIn} type="button" className="btn btn-secondary text-[#FFDEB6] mt-4">Login with Google</button>
                 <span className="text-xl font-semibold text-accent mt-4">
                     Don't have an Account?{" "}
                     <Link className="underline text-primary" to={"/auth/register"}>

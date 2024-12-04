@@ -6,9 +6,10 @@ import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/LoginPage";
 import Register from "../Pages/RegisterPage";
 import Campaigns from "../components/Campaigns";
-import Campaign from "../components/AddCampaign";
+import MyCampaigns from "../components/MyCampaigns";
 import Donations from "../components/Donations";
 import AddCampaign from "../components/AddCampaign";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -26,15 +27,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "/addcampaign", 
-                element: <AddCampaign></AddCampaign>
+                element: <PrivateRoute><AddCampaign></AddCampaign></PrivateRoute>
             },
             {
                 path: "/mycampaign",
-                element: <Campaign></Campaign>
+                element: <PrivateRoute><MyCampaigns></MyCampaigns></PrivateRoute>
             },
             {
                 path: "/donations",
-                element: <Donations></Donations>
+                element: <PrivateRoute><Donations></Donations></PrivateRoute>
             }
         ]
     },
