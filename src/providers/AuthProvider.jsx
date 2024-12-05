@@ -9,34 +9,82 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-
-    const createUser = (email, password) => {
+    // Create User
+    const createUser = async (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            return userCredential;
+        } catch (error) {
+            console.error("Error creating user:", error);
+        } finally {
+            setLoading(false); 
+        }
     }
 
-    const signInUser = (email, password) => {
+    // Sign In User
+    const signInUser = async (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            return userCredential;
+        } catch (error) {
+            console.error("Error signing in:", error);
+        } finally {
+            setLoading(false);  
+        }
     }
 
+    // Google Sign-In Handler
     const googleProvider = new GoogleAuthProvider();
-
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-        .then((result) => {
-            console.log(result)
-        })
-        .catch(error => {
-            console.log(`ERROR: `, error)
-        })
+    const handleGoogleSignIn = async () => {
+        setLoading(true);
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            console.log(result);
+        } catch (error) {
+            console.error("Google Sign-In Error:", error);
+        } finally {
+            setLoading(false);  
+        }
     }
 
-    const logOut = () => {
+    // Log Out
+    const logOut = async () => {
         setLoading(true);
-        return signOut(auth);
+        try {
+            await signOut(auth);
+        } catch (error) {
+            console.error("Error logging out:", error);
+        } finally {
+            setLoading(false);  
+        }
     };
 
+    // Persist user info in localStorage (optional)
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false);
+            if (currentUser) {
+                localStorage.setItem('user', JSON.stringify(currentUser));  // Persist user
+            } else {
+                localStorage.removeItem('user');  // Remove user data when logged out
+            }
+        });
+        return () => unsubscribe(); 
+    }, []);
+
+    // You can read user info from localStorage on app load if needed
+    useEffect(() => {
+        const savedUser = localStorage.getItem('user');
+        if (savedUser) {
+            setUser(JSON.parse(savedUser));  // Restore the user from localStorage
+            setLoading(false);  // Finished loading
+        } else {
+            setLoading(false);  // No user found, stop loading
+        }
+    }, []);
 
     const userInfo = {
         user,
@@ -46,16 +94,6 @@ const AuthProvider = ({ children }) => {
         logOut,
         handleGoogleSignIn
     };
-
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            setLoading(false);
-        });
-        return () => {
-            unsubscribe();
-        }
-    }, []);
 
     return (
         <AuthContext.Provider value={userInfo}>

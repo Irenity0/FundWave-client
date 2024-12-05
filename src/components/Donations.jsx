@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import Loading from "./loading";
 
 const MyDonations = () => {
   const { user } = useContext(AuthContext); // Get logged-in user's info
@@ -28,7 +29,7 @@ const MyDonations = () => {
   }, [user]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading></Loading>;
   }
 
   return (
@@ -47,7 +48,7 @@ const MyDonations = () => {
               <div key={donation._id} className="p-6 bg-neutral/70 shadow-lg rounded-lg">
                 <h3 className="text-2xl text-secondary font-bold mb-4">{donation.title}</h3>
                 <p className="text-accent mb-4"><span className="font-semibold">Type: </span>{donation.type}</p>
-                <p className="text-accent mb-4"><span className="font-semibold">Description: </span>${donation.description}</p>
+                <p className="text-accent mb-4"><span className="font-semibold">Description: </span>{donation.description}</p>
                 <p className="text-accent mb-4"><span className="font-semibold">Date: </span>{new Date(donation.date).toLocaleDateString()}</p>
                 <p className="text-accent mb-4 font-semibold">Thanks for donating!!</p>
               </div>
