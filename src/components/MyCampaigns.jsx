@@ -73,7 +73,7 @@ const MyCampaigns = () => {
                                 <td>{campaign.deadline}</td>
                                 <td>{campaign.email}</td>
                                 <td>{campaign.name}</td>
-                                <td><button className="btn text-blue-500 rounded-xl">Update</button></td>
+                                <td><button className="btn text-blue-500 rounded-xl"><Link to={`/updatecampaign/${campaign._id}`}>Update</Link></button></td>
                                 <td><button onClick={() => handleDelete(campaign._id)} className="btn text-red-500 rounded-xl">Delete</button></td>
                             </tr>
                         ))}
