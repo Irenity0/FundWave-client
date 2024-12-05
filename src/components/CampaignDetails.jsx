@@ -1,11 +1,24 @@
 import { useLoaderData } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const CampaignDetails = () => {
   const { user } = useContext(AuthContext); // Get logged-in user's info
   const campaign = useLoaderData(); // Fetch specific campaign details
+
+  const [mongoUser, setMongoUser] = useState(null);
+
+  useEffect(() => {
+      if (user?.email) {
+          fetch(`http://localhost:5000/users/${user.email}`)
+              .then(res => res.json())
+              .then(data => setMongoUser(data))
+              .catch(error => console.error("Error fetching MongoDB user:", error));
+      }
+  }, [user]);
+
+  const displayName = user?.displayName || mongoUser?.name || "User";
 
   const handleDonate = async () => {
     const currentDate = new Date();
@@ -35,8 +48,10 @@ const CampaignDetails = () => {
     const donationData = {
       campaignId: campaign._id,
       title: campaign.title,
-      donatedBy: campaign.email, // Logged-in user's email
-      name: campaign.name || "Anonymous",
+      type: campaign.campaignType,
+      description: campaign.description,
+      donatedBy: user.email, // Logged-in user's email
+      name: displayName,
       date: new Date().toISOString(),
     };
 
