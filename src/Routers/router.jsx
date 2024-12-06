@@ -18,22 +18,21 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <HomeLayout></HomeLayout>,
-        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
                 element: <HomePage></HomePage>,
-                loader: () => fetch('http://localhost:5000/campaigns')
+                loader: () => fetch('https://assignment-10-server-eight-iota.vercel.app/campaigns')
             },
             {
                 path: "/allcampaigns", 
                 element: <Campaigns></Campaigns>,
-                loader: () => fetch('http://localhost:5000/campaigns')
+                loader: () => fetch('https://assignment-10-server-eight-iota.vercel.app/campaigns')
             },
             {
                 path: "/allcampaigns/:id",
                 element: <PrivateRoute><CampaignDetails></CampaignDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/campaigns/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-eight-iota.vercel.app/campaigns/${params.id}`)
             },
             {
                 path: "/addcampaign", 
@@ -42,17 +41,17 @@ const router = createBrowserRouter([
             {
                 path: "/mycampaign",
                 element: <PrivateRoute><MyCampaigns></MyCampaigns></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/campaigns')
+                loader: () => fetch('https://assignment-10-server-eight-iota.vercel.app/campaigns')
             },
             {
                 path: "/donations",
                 element: <PrivateRoute><Donations></Donations></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/donations')
+                loader: () => fetch('https://assignment-10-server-eight-iota.vercel.app/donations')
             },
             {
                 path: '/updatecampaign/:id',
                 element: <PrivateRoute><UpdateCampaign></UpdateCampaign></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/campaigns/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-10-server-eight-iota.vercel.app/campaigns/${params.id}`)
             }
         ]
     },

@@ -31,7 +31,7 @@ const UpdateCampaign = () => {
         };
 
         // Send PUT request to update campaign
-        fetch(`http://localhost:5000/campaigns/${campaign._id}`, {
+        fetch(`https://assignment-10-server-eight-iota.vercel.app/campaigns/${campaign._id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(updateFormData),
@@ -69,7 +69,7 @@ const UpdateCampaign = () => {
 
     useEffect(() => {
         if (user && (!user.displayName || !user.email)) {
-          fetch(`http://localhost:5000/users/${user.email}`)
+          fetch(`https://assignment-10-server-eight-iota.vercel.app/users/${user.email}`)
             .then((res) => res.json())
             .then((data) => {
               if (data) {

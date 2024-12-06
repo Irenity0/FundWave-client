@@ -67,22 +67,21 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
             if (currentUser) {
-                localStorage.setItem('user', JSON.stringify(currentUser));  // Persist user
+                localStorage.setItem('user', JSON.stringify(currentUser));  
             } else {
-                localStorage.removeItem('user');  // Remove user data when logged out
+                localStorage.removeItem('user');  
             }
         });
         return () => unsubscribe(); 
     }, []);
 
-    // You can read user info from localStorage on app load if needed
     useEffect(() => {
         const savedUser = localStorage.getItem('user');
         if (savedUser) {
-            setUser(JSON.parse(savedUser));  // Restore the user from localStorage
-            setLoading(false);  // Finished loading
+            setUser(JSON.parse(savedUser));  
+            setLoading(false);  
         } else {
-            setLoading(false);  // No user found, stop loading
+            setLoading(false);  
         }
     }, []);
 

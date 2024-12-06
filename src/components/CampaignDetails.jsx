@@ -11,7 +11,7 @@ const CampaignDetails = () => {
 
   useEffect(() => {
       if (user?.email) {
-          fetch(`http://localhost:5000/users/${user.email}`)
+          fetch(`https://assignment-10-server-eight-iota.vercel.app/users/${user.email}`)
               .then(res => res.json())
               .then(data => setMongoUser(data))
               .catch(error => console.error("Error fetching MongoDB user:", error));
@@ -57,7 +57,7 @@ const CampaignDetails = () => {
 
     try {
       // Add the donation to the database (backend or Firebase)
-      const response = await fetch("http://localhost:5000/donations", {
+      const response = await fetch("https://assignment-10-server-eight-iota.vercel.app/donations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

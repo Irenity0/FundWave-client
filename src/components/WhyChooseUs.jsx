@@ -1,10 +1,19 @@
 import React from 'react';
+import { Typewriter } from 'react-simple-typewriter';
 
 const WhyChooseUs = () => {
   return (
     <div className="py-16">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-primary mb-6">Why Choose Us?</h2>
+        <h2 className="text-4xl font-bold text-primary mb-6"><Typewriter
+            words={['Why Choose Us?']}
+            loop={false} // Animates only once
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          /></h2>
         <p className="text-lg text-accent mb-12">
           We're committed to transparency, impact, and making every contribution count.  
           Here's why donors trust us to make a difference.

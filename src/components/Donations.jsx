@@ -10,7 +10,7 @@ const MyDonations = () => {
 
   useEffect(() => {
     // Fetch all donations from the backend
-    fetch("http://localhost:5000/donations")
+    fetch("https://assignment-10-server-eight-iota.vercel.app/donations")
       .then((res) => res.json())
       .then((data) => {
         setAllDonations(data);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Typewriter } from 'react-simple-typewriter';
 
 const RunningCampaign = ({ campaigns }) => {
   const currentDate = new Date();
@@ -11,7 +12,15 @@ const RunningCampaign = ({ campaigns }) => {
   return (
     <div className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-primary text-center mb-6">Current Campaigns</h2>
+        <h2 className="text-4xl font-bold text-primary text-center mb-6"><Typewriter
+            words={['Current Campaigns']}
+            loop={false} // Animates only once
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          /></h2>
         <p className="text-lg text-accent text-center mb-12">
           Be a part of our mission to create impactful change. Explore our ongoing campaigns and help us achieve meaningful milestones. 
           Your contributions drive progress and transformation.

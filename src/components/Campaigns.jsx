@@ -12,13 +12,19 @@ const Campaigns = () => {
   const sortCampaigns = async () => {
     try {
       setloading(true); 
-      const response = await fetch(`http://localhost:5000/campaigns/sorted`);
+      const response = await fetch(`https://assignment-10-server-eight-iota.vercel.app/campaigns/sorted`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch sorted campaigns');
       }
 
-      const sortedCampaigns = await response.json();
+      let sortedCampaigns = await response.json();
+
+      // Ensure sorting on the frontend by converting minDonation to a number
+      sortedCampaigns = sortedCampaigns.sort(
+        (a, b) => Number(a.minDonation) - Number(b.minDonation)
+      );
+
       setCampaigns(sortedCampaigns); 
     } catch (error) {
       setError('Error fetching sorted campaigns');
@@ -56,6 +62,7 @@ const Campaigns = () => {
               <th>Deadline</th>
               <th>Email</th>
               <th>Name</th>
+              <th>Options</th>
             </tr>
           </thead>
           <tbody>
@@ -70,6 +77,7 @@ const Campaigns = () => {
                 <td>{campaign.deadline}</td>
                 <td>{campaign.email}</td>
                 <td>{campaign.name}</td>
+                <td><Link to={`/allcampaigns/${campaign._id}`} className="btn px-6 btn-secondary">See More</Link></td>
               </tr>
             ))}
           </tbody>

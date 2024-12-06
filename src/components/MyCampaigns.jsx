@@ -23,7 +23,7 @@ const MyCampaigns = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/campaigns/${id}`, {
+        fetch(`https://assignment-10-server-eight-iota.vercel.app/campaigns/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

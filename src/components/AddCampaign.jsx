@@ -22,7 +22,7 @@ const AddCampaign = () => {
   // Fetch user info from the database if not available from AuthContext
   useEffect(() => {
     if (user && (!user.displayName || !user.email)) {
-      fetch(`http://localhost:5000/users/${user.email}`)
+      fetch(`https://assignment-10-server-eight-iota.vercel.app/users/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data) {
@@ -79,7 +79,7 @@ const AddCampaign = () => {
     };
 
     // Sending the campaign data to the backend
-    fetch('http://localhost:5000/campaigns', {
+    fetch('https://assignment-10-server-eight-iota.vercel.app/campaigns', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

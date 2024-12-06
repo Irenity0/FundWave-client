@@ -43,7 +43,7 @@ const Login = () => {
 
   const loginInfo = { email };
 
-  fetch(`http://localhost:5000/users`, {
+  fetch(`https://assignment-10-server-eight-iota.vercel.app/users`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

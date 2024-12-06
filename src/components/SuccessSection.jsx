@@ -1,11 +1,20 @@
 import React from 'react';
 import CountUp from 'react-countup';
+import { Typewriter } from 'react-simple-typewriter';
 
 const SuccessSection = () => {
   return (
     <div className="py-16 bg-neutral rounded-2xl">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-primary mb-6">Our Milestones</h2>
+        <h2 className="text-4xl font-bold text-primary mb-6"><Typewriter
+            words={['Our Milestones']}
+            loop={false} // Animates only once
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          /></h2>
         <p className="text-lg text-accent mb-12">
           Together, we’re shaping the future! From impactful campaigns to meaningful change, 
           our journey has been one of purpose, passion, and progress. Here’s what we’ve achieved so far:

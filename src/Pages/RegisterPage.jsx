@@ -39,7 +39,7 @@ const Register = () => {
     
                     const newUser = { name, email, photo };
                     // Save new user info to the database
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://assignment-10-server-eight-iota.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

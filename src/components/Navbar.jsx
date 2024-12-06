@@ -11,7 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
       if (user?.email) {
-          fetch(`http://localhost:5000/users/${user.email}`)
+          fetch(`https://assignment-10-server-eight-iota.vercel.app/users/${user.email}`)
               .then(res => res.json())
               .then(data => setMongoUser(data))
               .catch(error => console.error("Error fetching MongoDB user:", error));
