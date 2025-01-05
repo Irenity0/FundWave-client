@@ -34,29 +34,45 @@ const MyDonations = () => {
 
   return (
     <div className="py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-primary text-center mb-6">
-          My Donations
-        </h2>
-        {myDonations.length === 0 ? (
-          <p className="text-center text-lg text-accent">
-            You haven't made any donations yet.
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {myDonations.map((donation) => (
-              <div key={donation._id} className="p-6 bg-neutral/70 shadow-lg rounded-lg">
-                <h3 className="text-2xl text-secondary font-bold mb-4">{donation.title}</h3>
-                <p className="text-accent mb-4"><span className="font-semibold">Type: </span>{donation.type}</p>
-                <p className="text-accent mb-4"><span className="font-semibold">Description: </span>{donation.description}</p>
-                <p className="text-accent mb-4"><span className="font-semibold">Date: </span>{new Date(donation.date).toLocaleDateString()}</p>
-                <p className="text-accent mb-4 font-semibold">Thanks for donating!!</p>
-              </div>
+  <div className="container mx-auto px-4">
+    <h2 className="text-4xl font-bold text-primary text-center mb-6">
+      My Donations
+    </h2>
+    {myDonations.length === 0 ? (
+      <p className="text-center text-lg text-accent">
+        You haven't made any donations yet.
+      </p>
+    ) : (
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* Table Head */}
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Thanks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myDonations.map((donation, index) => (
+              <tr key={donation._id}>
+                <td>{index + 1}</td>
+                <td className="underline font-bold">{donation.title}</td>
+                <td>{donation.type}</td>
+                <td>{donation.description}</td>
+                <td>{new Date(donation.date).toLocaleDateString()}</td>
+                <td className="font-semibold">Thanks for donating!!</td>
+              </tr>
             ))}
-          </div>
-        )}
+          </tbody>
+        </table>
       </div>
-    </div>
+    )}
+  </div>
+</div>
   );
 };
 

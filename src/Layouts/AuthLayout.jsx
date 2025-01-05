@@ -4,11 +4,13 @@ import Footer from "../components/Footer";
 
 const AuthLayout = () => {
     return (
-        <div className="w-11/12 mx-auto space-y-14 font-parkinsans">
+        <>
         <Navbar></Navbar>
+        <div className="w-11/12 mx-auto space-y-14 font-parkinsans">
         <Outlet></Outlet>
         <Footer></Footer>
         </div>
+        </>
     );
 };
 

@@ -12,6 +12,8 @@ import AddCampaign from "../components/AddCampaign";
 import PrivateRoute from "./PrivateRoute";
 import CampaignDetails from '../components/CampaignDetails';
 import UpdateCampaign from "../components/UpdateCampaign";
+import Faq from "../components/FAQ";
+import SuccessSection from "../components/SuccessSection";
 
 
 const router = createBrowserRouter([
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
                 path: '/updatecampaign/:id',
                 element: <PrivateRoute><UpdateCampaign></UpdateCampaign></PrivateRoute>,
                 loader: ({params}) => fetch(`https://assignment-10-server-eight-iota.vercel.app/campaigns/${params.id}`)
+            },
+            {
+                path: "/faq",
+                element: <Faq/>
+            },
+            {
+                path: "success",
+                element: <SuccessSection/>
             }
         ]
     },

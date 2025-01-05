@@ -50,38 +50,27 @@ const Campaigns = () => {
       
       {loading && <Loading></Loading>}
       {error && <p className="text-red-500">Error: {error}</p>}
-      
-      <div className="overflow-x-auto">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Campaign Type</th>
-              <th>Minimum Donation</th>
-              <th>Deadline</th>
-              <th>Email</th>
-              <th>Name</th>
-              <th>Options</th>
-            </tr>
-          </thead>
-          <tbody>
-            {campaigns.map((campaign, index) => (
-              <tr key={campaign.email}>
-                <td>{index + 1}</td>
-                <td className="underline font-bold">
-                  <Link to={`/allcampaigns/${campaign._id}`}>{campaign.title}</Link>
-                </td>
-                <td>{campaign.campaignType}</td>
-                <td>{campaign.minDonation}</td>
-                <td>{campaign.deadline}</td>
-                <td>{campaign.email}</td>
-                <td>{campaign.name}</td>
-                <td><Link to={`/allcampaigns/${campaign._id}`} className="btn px-6 btn-secondary">See More</Link></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {campaigns.map((campaign, index) => (
+          <div key={campaign.email} className="card text-accent bg-neutral shadow-xl p-6">
+            <h2 className="card-title text-lg font-bold">
+              <Link to={`/allcampaigns/${campaign._id}`} className="underline">
+                {campaign.title}
+              </Link>
+            </h2>
+            <p><strong>Type:</strong> {campaign.campaignType}</p>
+            <p><strong>Min Donation:</strong> ${campaign.minDonation}</p>
+            <p><strong>Deadline:</strong> {campaign.deadline}</p>
+            <p><strong>Email:</strong> {campaign.email}</p>
+            <p><strong>Name:</strong> {campaign.name}</p>
+            <div className="card-actions mt-4">
+              <Link to={`/allcampaigns/${campaign._id}`} className="btn btn-primary">
+                See More
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ const RunningCampaign = ({ campaigns }) => {
           Your contributions drive progress and transformation.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {runningCampaigns.map(campaign => (
             <div key={campaign._id} className="p-6 bg-neutral/70 shadow-lg rounded-lg">
               <h3 className="text-2xl text-secondary font-bold mb-4">{campaign.title}</h3>

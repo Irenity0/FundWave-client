@@ -4,7 +4,7 @@ import { Typewriter } from 'react-simple-typewriter';
 
 const SuccessSection = () => {
   return (
-    <div className="py-16 bg-neutral rounded-2xl">
+    <div className="py-16 lg:mt-32 bg-neutral rounded-2xl">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-primary mb-6"><Typewriter
             words={['Our Milestones']}
